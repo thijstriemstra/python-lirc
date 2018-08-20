@@ -8,6 +8,7 @@ addons:
             - cython
             - build-essential
             - liblircclient-dev
+            - liblirc-dev
             - python3-dev
 
 matrix:
