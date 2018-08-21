@@ -24,7 +24,7 @@ matrix:
 
 install: 
   - pip install --ignore-installed --upgrade setuptools pip tox Cython
-  - wget https://sourceforge.net/projects/lirc/files/latest/download
+  - wget -O lirc-0.10.1.tar.bz2 https://sourceforge.net/projects/lirc/files/latest/download
   - tar -xzvf lirc-0.10.1.tar.bz2
   - pushd lirc-0.10.1 && ./configure --prefix=/usr && make && sudo make install && popd
 
