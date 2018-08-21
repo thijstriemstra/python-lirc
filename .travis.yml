@@ -1,5 +1,5 @@
 sudo: true
-language: python
+language: python3.5
 cache: pip
 
 addons:
@@ -11,13 +11,14 @@ addons:
             - build-essential
             - python3.5
             - python3.5-dev
+            - python3-setuptools
             - python3-yaml
             - xsltproc
 
 install: 
-  - pip install --ignore-installed --upgrade setuptools pip tox Cython PyYAML
+  - pip3 install --ignore-installed --upgrade setuptools pip tox Cython PyYAML
   - wget --timestamping --output-document=lirc-0.10.1.tar.bz2 https://sourceforge.net/projects/lirc/files/latest/download
   - tar xf lirc-0.10.1.tar.bz2
-  - pushd lirc-0.10.1 && ./configure --prefix=/ && make && sudo make install && popd
+  - pushd lirc-0.10.1 && ./configure --prefix=/usr && make && sudo make install && popd
 
 script: tox -e py35
