@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: python
 cache: pip
 
@@ -7,8 +7,6 @@ addons:
         packages:
             - cython
             - build-essential
-            - liblircclient-dev
-            - lirc
             - python3-dev
 
 matrix:
@@ -24,7 +22,10 @@ matrix:
         - python: 3.5
           env: TOXENV=qa
 
-install: pip install --ignore-installed --upgrade setuptools pip tox Cython
-script:
-  - ls -l /usr/include/lirc/
-  - tox -vv
+install: 
+  - pip install --ignore-installed --upgrade setuptools pip tox Cython
+  - wget https://downloads.sourceforge.net/project/lirc/LIRC/0.10.1/lirc-0.10.1.tar.bz2?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Flirc%2Ffiles%2FLIRC%2F0.10.1%2Flirc-0.10.1.tar.bz2%2Fdownload&ts=1534810232
+  - tar -xzvf lirc-0.10.1.tar.bz2
+  - pushd lirc-0.10.1 && ./configure --prefix=/usr && make && sudo make install && popd
+
+script: tox -vv
