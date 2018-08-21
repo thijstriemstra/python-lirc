@@ -8,6 +8,8 @@ addons:
             - cython
             - build-essential
             - python3-dev
+            - python3-yaml
+            - xsltproc
 
 matrix:
     include:
@@ -23,8 +25,8 @@ matrix:
           env: TOXENV=qa
 
 install: 
-  - pip install --ignore-installed --upgrade setuptools pip tox Cython
-  - wget --output-document=lirc-0.10.1.tar.bz2 https://sourceforge.net/projects/lirc/files/latest/download
+  - pip install --ignore-installed --upgrade setuptools pip tox Cython PyYAML
+  - wget --timestamping --output-document=lirc-0.10.1.tar.bz2 https://sourceforge.net/projects/lirc/files/latest/download
   - tar xf lirc-0.10.1.tar.bz2
   - pushd lirc-0.10.1 && ./configure --prefix=/usr && make && sudo make install && popd
 
