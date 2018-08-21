@@ -4,6 +4,8 @@ cache: pip
 
 addons:
     apt:
+        sources:
+            - deadsnakes
         packages:
             - cython
             - build-essential
