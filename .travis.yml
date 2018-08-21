@@ -9,27 +9,15 @@ addons:
         packages:
             - cython
             - build-essential
-            - python3.4-dev
+            - python3.5
+            - python3.5-dev
             - python3-yaml
             - xsltproc
-
-matrix:
-    include:
-        - python: 3.4
-          env: TOXENV=py34
-        - python: 3.5
-          env: TOXENV=py35
-        - python: 3.6
-          env: TOXENV=py36
-        - python: 3.7-dev
-          env: TOXENV=py37
-        - python: 3.5
-          env: TOXENV=qa
 
 install: 
   - pip install --ignore-installed --upgrade setuptools pip tox Cython PyYAML
   - wget --timestamping --output-document=lirc-0.10.1.tar.bz2 https://sourceforge.net/projects/lirc/files/latest/download
   - tar xf lirc-0.10.1.tar.bz2
-  - pushd lirc-0.10.1 && ./configure && make && sudo make install && popd
+  - pushd lirc-0.10.1 && ./configure --prefix=/ && make && sudo make install && popd
 
-script: tox -v
+script: tox -e py35
