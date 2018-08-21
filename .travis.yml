@@ -7,7 +7,7 @@ addons:
         packages:
             - cython
             - build-essential
-            - python3-dev
+            - python3.4-dev
             - python3-yaml
             - xsltproc
 
@@ -28,6 +28,6 @@ install:
   - pip install --ignore-installed --upgrade setuptools pip tox Cython PyYAML
   - wget --timestamping --output-document=lirc-0.10.1.tar.bz2 https://sourceforge.net/projects/lirc/files/latest/download
   - tar xf lirc-0.10.1.tar.bz2
-  - pushd lirc-0.10.1 && ./configure --prefix=/usr && make && sudo make install && popd
+  - pushd lirc-0.10.1 && ./configure && make && sudo make install && popd
 
 script: tox -v
