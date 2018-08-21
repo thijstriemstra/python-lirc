@@ -25,4 +25,6 @@ matrix:
           env: TOXENV=qa
 
 install: pip install --ignore-installed --upgrade setuptools pip tox Cython
-script: tox -vv
+script:
+  - ls -l /usr/include/lirc/
+  - tox -vv
