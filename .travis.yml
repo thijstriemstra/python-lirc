@@ -13,11 +13,12 @@ addons:
             - python3.5-dev
             - python3-setuptools
             - python3-pip
+            - python3-wheel
             - python3-yaml
             - xsltproc
 
 install: 
-  - pip3 install --ignore-installed --upgrade setuptools pip tox Cython PyYAML
+  - sudo pip3 install --ignore-installed --upgrade setuptools pip tox Cython PyYAML
   - wget --timestamping --output-document=lirc-0.10.1.tar.bz2 https://sourceforge.net/projects/lirc/files/latest/download
   - tar xf lirc-0.10.1.tar.bz2
   - pushd lirc-0.10.1 && ./configure --prefix=/usr && make && sudo make install && popd
