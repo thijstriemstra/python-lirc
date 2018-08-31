@@ -7,7 +7,7 @@ addons:
         packages:
             - cython
             - build-essential
-            - libpython-dev
+            - libpython3.4-dev
             - python3.4-dev
             - python3-setuptools
             - python3-pip
