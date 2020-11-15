@@ -10,4 +10,8 @@ htmlcov/
 nosetests.xml
 coverage.xml
 
+lirc/lirc.c
+dist/
+python_lirc.egg-info/
+build/
 
